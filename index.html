@@ -50,7 +50,6 @@ jQuery(document).ready(function ($) {
   var $card = $(".card");
   var $container = $(".container");
   var $goku = $(".goku img");
-  var $purchase = $(".purchase");
   
   $container.on("mousemove", function (e) {
     let xAxis = (window.innerWidth / 2 - e.clientX) / 25;
@@ -58,13 +57,14 @@ jQuery(document).ready(function ($) {
     $card.css("transform", `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`);
   });
 
-  $container.hover(function () {
-    $card.toggleClass("has-transform");
-    $goku.toggleClass("has-transform");
-    $purchase.toggleClass("has-transform");
+  $container.on("mouseenter", function () {
+    $card.addClass("has-transform");
+    $goku.addClass("has-transform");
   });
-
+  
   $container.on("mouseleave", function () {
+    $card.removeClass("has-transform");
+    $goku.removeClass("has-transform");
     $card.css("transform", `rotateY(0deg) rotateX(0deg)`);
   });
 });	
